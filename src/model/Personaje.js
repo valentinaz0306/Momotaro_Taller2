@@ -1,45 +1,59 @@
+let mov = 0;
+
 class Personaje extends Elemento {
-    constructor(px,py,ancho,alto,estado,texto,propiedad){
-        super(px,py,ancho,alto);
+    constructor(px, py, ancho, alto, estado, texto, propiedad) {
+        super(px, py, ancho, alto);
         //areibutos de la imagen 
-        this.px=px;
-        this.py=py;
-        this.ancho=ancho;
-        this.alto=alto;
+        this.px = px;
+        this.py = py;
+        this.ancho = ancho;
+        this.alto = alto;
         // para saber cuando el usuario interactuo con el objeto
-        this.estado=estado;
+        this.estado = estado;
         //asociar texto con la imagen 
-        this.texto=texto;
+        this.texto = texto;
         // propiedad es el tipo de interaccion (cambio de posicion, color etc..)
-        this.propiedad=propiedad;
+        this.propiedad = propiedad;
 
     }
 
-    cambiarEstado(){    
-        this.estado= true;
+    cambiarEstado() {
+        this.estado = true;
 
     }
 
-    interaccion(){    
+    interaccion() {
 
-        switch (this.propiedad){
+        switch (this.propiedad) {
 
             //movimiento
             case 0:
 
-            this.px= this.px + 100;
-            this.cambiarEstado();
-
-            break;
-
-            case 1: 
-            this.px=this.px+(plx*5);
-            break;
 
 
+                break;
 
+            case 1:
 
+                mm = 1;
 
+                this.cambiarEstado();
+                break;
+
+            case 2:
+                b = 1;
+
+                this.cambiarEstado();
+                break;
+
+            case 3:
+                d = 1;
+                this.cambiarEstado();
+                break;
+            case 4:
+                m =1;
+                this.cambiarEstado();
+                break;
 
 
         }
@@ -47,38 +61,37 @@ class Personaje extends Elemento {
 
 
     }
-    
-    getPosx(){
+
+    getPosx() {
         return this.px;
     }
-    
-    getPosy(){
+
+    getPosy() {
         return this.py;
     }
-    
-    getRuta(){
+
+    getRuta() {
         return this.ruta;
     }
-    getAncho(){
+    getAncho() {
         return this.ancho;
     }
-    
-    getAlto(){
+
+    getAlto() {
         return this.alto;
     }
 
-    getEstado(){
+    getEstado() {
         return this.estado;
     }
 
-    getTexto(){
+    getTexto() {
         return this.texto;
     }
 
-    getPropiedad(){
+    getPropiedad() {
         return this.propiedad;
     }
 
-    }
+}
 
-    
