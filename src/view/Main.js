@@ -4,10 +4,13 @@
 let listaPalabras1= new Array();
 let listP1= new Array();
 
+//Se crea la variable que controla el parallax
+let plx=35;
+
 //Se crea el objeto personaje para cada elemento.
 let Pmico = new Personaje(-50,300,0,0,false,"mico",0);
 let Pbird = new Personaje(0,50,0,0,false,"pajaro",0);
-let Pdemon = new Personaje (700,180,0,0,false,"demonio",0);
+let Pdemon = new Personaje (1000,180,0,0,false,"demonio",1);
 let Pmomo = new Personaje (-100,180,0,0,false,"momotaro",0);
 let Pdog = new Personaje (150,320,0,0,false,"perro",0);
 
@@ -18,8 +21,7 @@ let BG3;
 let BG4;
 let BG5;
 
-//Se crea la variable que controla el parallax
-let plx;
+
 
 //Se crean las variables para los areglos de pngs
 let Midle;
@@ -49,9 +51,6 @@ function setup(){
     BG3 = loadImage('image/BG/BG3.png');
     BG4 = loadImage('image/BG/BG4.png');
     BG5 = loadImage('image/BG/BG5.png');
-
-//Se inicializa la variable del parallax
- plx=0;
 
 
 //Se crea el arreglo de pngs para el mono
@@ -108,7 +107,7 @@ function draw (){
     image(BG4,-200+(plx*5),0);
     image(BG5,0,0);
 
-  
+   
     //Se pinta el pajaro
             image(Bidle[bv],Pbird.getPosx(),Pbird.getPosy());
             if (frameCount % 15 === 0) {
@@ -119,7 +118,7 @@ function draw (){
             }
 
 //Se pinta el demonio
-            image(Dempunch[dpv],Pdemon.getPosx(),Pdemon.getPosy());
+            image(Dempunch[dpv],Pdemon.getPosx()+(plx*5),Pdemon.getPosy());
             if (frameCount % 15 === 0) {
                 dpv++;
                 if (dpv >= 3) {
@@ -156,25 +155,33 @@ function draw (){
             }
 
 //Control de parallax temporal
+
  if ((mouseX>0 && mouseX < 100)&&(mouseY>0 && mouseY <700)){
-      plx++;
+     if(plx<=35){
+        plx++  ;
+
+    
+
+     }
+    
         }
 if ((mouseX>1100 && mouseX < 1200)&&(mouseY>0 && mouseY <700)){
-      plx--;
-        }
+    if(plx>=-35){
+      plx-- ;
+        }}
 
 
 
 
 
-        
+
 }
 
 
 
 function mousePressed(){
 
-  Pmico.interaccion();
+  //Pmico.interaccion();
 
 
 

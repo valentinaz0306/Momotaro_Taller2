@@ -32,6 +32,10 @@ class Personaje extends Elemento {
 
             break;
 
+            case 1: 
+            this.px=this.px+(plx*5);
+            break;
+
 
 
 
