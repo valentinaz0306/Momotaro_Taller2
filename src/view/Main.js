@@ -4,6 +4,8 @@
 let listaPalabras1= new Array();
 let listP1= new Array();
 let Pmico = new Personaje(-50,300,0,0,false,"mico",0);
+let Pbird = new Personaje(-80,50,0,0,false,"pajaro",0);
+let Pdemon = new Personaje (700,180,0,0,false,"demonio",0);
 
 //Se cargan las fotos del fondo;
 let BG;
@@ -16,6 +18,8 @@ let plx;
 
 
 let Midle;
+let Bidle;
+let Dempunch;
 
 
 
@@ -50,7 +54,17 @@ function setup(){
  }
 
 
+ Bidle = [];
+ bv = 0;
+ for (i = 0; i <= 1; i++) {
+     Bidle.push(loadImage("image/Bird/Bird" + i + ".png"));
+ }
 
+ Dempunch = [];
+ dpv = 0;
+ for (i = 0; i <= 2; i++) {
+     Dempunch.push(loadImage("image/Demon/Demon" + i + ".png"));
+ }
 
 }
 
@@ -73,6 +87,23 @@ function draw (){
                 }
             }
 
+
+            image(Bidle[bv],Pbird.getPosx(),Pbird.getPosy());
+            if (frameCount % 15 === 0) {
+                bv++;
+                if (bv >= 2) {
+                    bv = 0;
+                }
+            }
+
+
+            image(Dempunch[dpv],Pdemon.getPosx(),Pdemon.getPosy());
+            if (frameCount % 15 === 0) {
+                dpv++;
+                if (dpv >= 3) {
+                  dpv = 0;
+                }
+            }
 
     if ((mouseX>0 && mouseX < 100)&&(mouseY>0 && mouseY <700)){
       plx++;
