@@ -29,7 +29,7 @@ class Personaje extends Elemento {
             //movimiento
             case 0:
 
-            this.px= this.px + 5;
+            this.px= this.px + 100;
             this.cambiarEstado();
 
             break;

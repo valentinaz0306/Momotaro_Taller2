@@ -38,6 +38,7 @@ function draw (){
 
 function mousePressed(){
 
+  Pmico.interaccion();
 
 
 
