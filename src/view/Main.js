@@ -4,8 +4,10 @@
 let listaPalabras1= new Array();
 let listP1= new Array();
 let Pmico = new Personaje(-50,300,0,0,false,"mico",0);
-let Pbird = new Personaje(-80,50,0,0,false,"pajaro",0);
+let Pbird = new Personaje(0,50,0,0,false,"pajaro",0);
 let Pdemon = new Personaje (700,180,0,0,false,"demonio",0);
+let Pmomo = new Personaje (-100,180,0,0,false,"momotaro",0);
+let Pdog = new Personaje (150,320,0,0,false,"perro",0);
 
 //Se cargan las fotos del fondo;
 let BG;
@@ -20,6 +22,8 @@ let plx;
 let Midle;
 let Bidle;
 let Dempunch;
+let MMs;
+let Dbark;
 
 
 
@@ -66,6 +70,26 @@ function setup(){
      Dempunch.push(loadImage("image/Demon/Demon" + i + ".png"));
  }
 
+
+
+ MMs = [];
+ msv = 0;
+ for (i = 0; i <= 1; i++) {
+     MMs.push(loadImage("image/MMs/MMs" + i + ".png"));
+ }
+
+
+ Dbark = [];
+ dbv = 0;
+ for (i = 0; i <= 1; i++) {
+     Dbark.push(loadImage("image/Dbark/Db" + i + ".png"));
+ }
+
+
+
+
+
+
 }
 
 function draw (){
@@ -77,17 +101,7 @@ function draw (){
     image(BG4,-200+(plx*5),0);
     image(BG5,0,0);
 
-    
-
-    image(Midle[mv],Pmico.getPosx(),Pmico.getPosy());
-            if (frameCount % 25 === 0) {
-                mv++;
-                if (mv >= 3) {
-                    mv = 0;
-                }
-            }
-
-
+  
             image(Bidle[bv],Pbird.getPosx(),Pbird.getPosy());
             if (frameCount % 15 === 0) {
                 bv++;
@@ -104,6 +118,32 @@ function draw (){
                   dpv = 0;
                 }
             }
+
+            image(MMs[msv],Pmomo.getPosx(),Pmomo.getPosy());
+            if (frameCount % 15 === 0) {
+                msv++;
+                if (msv >= 2) {
+                  msv = 0;
+                }
+            }
+
+            image(Midle[mv],Pmico.getPosx(),Pmico.getPosy());
+            if (frameCount % 25 === 0) {
+                mv++;
+                if (mv >= 3) {
+                    mv = 0;
+                }
+            }
+
+
+            image(Dbark[dbv],Pdog.getPosx(),Pdog.getPosy());
+            if (frameCount % 25 === 0) {
+                dbv++;
+                if (dbv >= 2) {
+                    dbv = 0;
+                }
+            }
+
 
     if ((mouseX>0 && mouseX < 100)&&(mouseY>0 && mouseY <700)){
       plx++;
