@@ -15,6 +15,13 @@ let d = 0;
 
 let m = 0;
 
+let dm = 0;
+
+
+
+let click = true;
+let walk = false;
+
 //Se crea el objeto personaje para cada elemento.
 let Pmico = new Personaje(-50, 300, 0, 0, false, "mico", 4);
 let Pbird = new Personaje(0, 50, 0, 0, false, "pajaro", 2);
@@ -34,14 +41,18 @@ let momo;
 let perro;
 let mono;
 let pajaro;
+let demon;
 
 
 //Se crean las variables para los areglos de pngs
 let Midle;
+let Mw;
 let Bidle;
 let Dempunch;
 let MMs;
+let MMw;
 let Dbark;
+let Dwalk;
 
 
 
@@ -71,6 +82,7 @@ function setup() {
     perro = loadImage('image/Dwalk/Dw0.png');
     mono = loadImage('image/Midle/Mt1.png');
     pajaro = loadImage('image/Bird/Bird0.png');
+    demon = loadImage('image/Demon/Demon0.png');
 
 
     //Se crea el arreglo de pngs para el mono
@@ -78,6 +90,12 @@ function setup() {
     mv = 0;
     for (i = 0; i <= 2; i++) {
         Midle.push(loadImage("image/Midle/Mt" + i + ".png"));
+    }
+
+    Mw = [];
+    mwv = 0;
+    for (i = 0; i <= 2; i++) {
+        Mw.push(loadImage("image/Mw/Mw" + i + ".png"));
     }
 
     //Se crea el arreglo de pngs para el parajo
@@ -102,11 +120,23 @@ function setup() {
         MMs.push(loadImage("image/MMs/MMs" + i + ".png"));
     }
 
+    MMw = [];
+    mwv = 0;
+    for (i = 0; i <= 2; i++) {
+        MMw.push(loadImage("image/MMw/MMw" + i + ".png"));
+    }
+
     //Se crea el arreglo de pngs para el perro
     Dbark = [];
     dbv = 0;
     for (i = 0; i <= 1; i++) {
         Dbark.push(loadImage("image/Dbark/Db" + i + ".png"));
+    }
+
+    Dwalk = [];
+    dwv = 0;
+    for (i = 0; i <= 1; i++) {
+        Dwalk.push(loadImage("image/Dwalk/Dw" + i + ".png"));
     }
 
 
@@ -153,13 +183,28 @@ function draw() {
 
 
     //Se pinta el demonio
-    image(Dempunch[dpv], Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
-    if (frameCount % 15 === 0) {
-        dpv++;
-        if (dpv >= 3) {
-            dpv = 0;
-        }
+    switch (dm) {
+        case 0:
+
+            image(demon, Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
+
+            break;
+
+        case 1:
+            image(Dempunch[dpv], Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
+            if (frameCount % 15 === 0) {
+                dpv++;
+                if (dpv >= 3) {
+                    dpv = 0;
+                }
+            }
+            break;
+
     }
+
+
+
+
 
 
     //Se pinta momotaro
@@ -180,6 +225,16 @@ function draw() {
 
             break;
 
+        case 2:
+            image(MMw[mwv], Pmomo.getPosx(), Pmomo.getPosy());
+            if (frameCount % 27 === 0) {
+                mwv++;
+                if (mwv >= 3) {
+                    mwv = 0;
+                }
+            }
+
+            break;
 
 
     }
@@ -204,7 +259,16 @@ function draw() {
             }
 
             break;
+        case 2:
+            image(Mw[mwv], Pmico.getPosx(), Pmico.getPosy());
+            if (frameCount % 25 === 0) {
+                mwv++;
+                if (mwv >= 3) {
+                    mwv = 0;
+                }
+            }
 
+            break;
 
 
     }
@@ -228,11 +292,26 @@ function draw() {
             }
             break;
 
+        case 2:
+            image(Dwalk[dwv], Pdog.getPosx(), Pdog.getPosy());
+            if (frameCount % 25 === 0) {
+                dwv++;
+                if (dwv >= 2) {
+                    dwv = 0;
+                }
+            }
+            break;
 
 
     }
 
 
+    if (plx == -36) {
+        walk = false;
+        if (walk == false) {
+            (mm = 1) && (m = 1) && (d = 1) && (b = 1);
+        }
+    }
 
 
 
@@ -245,9 +324,18 @@ function draw() {
     // }
 
     if ((mouseX > 1100 && mouseX < 1200) && (mouseY > 0 && mouseY < 700)) {
+        walk = true;
+
+        if (walk == true) {
+            (mm = 2) && (m = 2) && (d = 2) && (b = 1);
+        }
+
         if (plx >= -35) {
             plx--;
+
         }
+
+
     }
 
 
@@ -273,21 +361,53 @@ function mousePressed() {
 
     //Pmico.interaccion();
 
-    if ((mouseX > 70 && mouseX < 158) && (mouseY > 286 && mouseY < 631)) {
-        Pmomo.interaccion();
+
+    if (click == true) {
+
+
+        if ((mouseX > 70 && mouseX < 158) && (mouseY > 286 && mouseY < 631)) {
+            Pmomo.interaccion();
+        }
+
+
+        if ((mouseX > 212 && mouseX < 306) && (mouseY > 278 && mouseY < 346)) {
+            Pbird.interaccion();
+        }
+
+        if ((mouseX > 202 && mouseX < 264) && (mouseY > 447 && mouseY < 654)) {
+            Pmico.interaccion();
+        }
+
+        if ((mouseX > 332 && mouseX < 425) && (mouseY > 519 && mouseY < 636)) {
+            Pdog.interaccion();
+        }
+
+        if (mm == 1 && m == 1 && d == 1 && b == 1) {
+            click = false;
+        }
+
     }
 
 
-    if ((mouseX > 212 && mouseX < 306) && (mouseY > 278 && mouseY < 346)) {
-        Pbird.interaccion();
+    if (plx == -36) {
+        if ((mouseX > 1000 && mouseX < 1150) && (mouseY > 266 && mouseY < 650)) {
+            Pdemon.interaccion();
+
+
+        }
     }
 
-    if ((mouseX > 202 && mouseX < 264) && (mouseY > 447 && mouseY < 654)) {
-        Pmico.interaccion();
-    }
 
-    if ((mouseX > 332 && mouseX < 425) && (mouseY > 519 && mouseY < 636)) {
-        Pdog.interaccion();
-    }
+
+
+
+
+
+
+
+
 
 }
+
+
+

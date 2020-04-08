@@ -28,7 +28,8 @@ class Personaje extends Elemento {
 
             //movimiento
             case 0:
-
+                dm = 1;
+                this.cambiarEstado();
 
 
                 break;
@@ -51,7 +52,7 @@ class Personaje extends Elemento {
                 this.cambiarEstado();
                 break;
             case 4:
-                m =1;
+                m = 1;
                 this.cambiarEstado();
                 break;
 
