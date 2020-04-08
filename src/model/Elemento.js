@@ -6,6 +6,8 @@ class Elemento {
         this.alto=alto;
         
     }
-    pintarse();
+    pintarse(){
+        
+    }
     
     }
