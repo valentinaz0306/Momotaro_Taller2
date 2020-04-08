@@ -23,11 +23,11 @@ let click = true;
 let walk = false;
 
 //Se crea el objeto personaje para cada elemento.
-let Pmico = new Personaje(-50, 300, 0, 0, false, "mico", 4);
-let Pbird = new Personaje(0, 50, 0, 0, false, "pajaro", 2);
+let Pmico = new Personaje(0, 300, 0, 0, false, "mico", 4);
+let Pbird = new Personaje(0,-50, 0, 0, false, "pajaro", 2);
 let Pdemon = new Personaje(1000, 180, 0, 0, false, "demonio", 0);
 let Pmomo = new Personaje(-100, 180, 0, 0, false, "momotaro", 1);
-let Pdog = new Personaje(150, 320, 0, 0, false, "perro", 3);
+let Pdog = new Personaje(200, 320, 0, 0, false, "perro", 3);
 
 //Se crean las variables de los pngs de fondo;
 let BG;
@@ -370,15 +370,15 @@ function mousePressed() {
         }
 
 
-        if ((mouseX > 212 && mouseX < 306) && (mouseY > 278 && mouseY < 346)) {
+        if ((mouseX > 212 && mouseX < 306) && (mouseY > 178 && mouseY < 250)) {
             Pbird.interaccion();
         }
 
-        if ((mouseX > 202 && mouseX < 264) && (mouseY > 447 && mouseY < 654)) {
+        if ((mouseX > 230 && mouseX < 320) && (mouseY > 447 && mouseY < 654)) {
             Pmico.interaccion();
         }
 
-        if ((mouseX > 332 && mouseX < 425) && (mouseY > 519 && mouseY < 636)) {
+        if ((mouseX > 377 && mouseX < 500) && (mouseY > 519 && mouseY < 636)) {
             Pdog.interaccion();
         }
 
