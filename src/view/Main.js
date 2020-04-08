@@ -3,6 +3,8 @@
 
 let listaPalabras1= new Array();
 let listP1= new Array();
+
+//Se crea el objeto personaje para cada elemento.
 let Pmico = new Personaje(-50,300,0,0,false,"mico",0);
 let Pbird = new Personaje(0,50,0,0,false,"pajaro",0);
 let Pdemon = new Personaje (700,180,0,0,false,"demonio",0);
@@ -16,9 +18,10 @@ let BG3;
 let BG4;
 let BG5;
 
+//Se crea la variable que controla el parallax
 let plx;
 
-
+//Se crean las variables para los areglos de pngs
 let Midle;
 let Bidle;
 let Dempunch;
@@ -40,30 +43,32 @@ function setup(){
 
  
     
-
+//Se cargan las imagenes de fondo.
     BG = loadImage('image/BG/BG.png');
     BG2 = loadImage('image/BG/BG2.png');
     BG3 = loadImage('image/BG/BG3.png');
     BG4 = loadImage('image/BG/BG4.png');
     BG5 = loadImage('image/BG/BG5.png');
 
+//Se inicializa la variable del parallax
  plx=0;
 
 
-
+//Se crea el arreglo de pngs para el mono
  Midle = [];
  mv = 0;
  for (i = 0; i <= 2; i++) {
      Midle.push(loadImage("image/Midle/Mt" + i + ".png"));
  }
 
-
+//Se crea el arreglo de pngs para el parajo
  Bidle = [];
  bv = 0;
  for (i = 0; i <= 1; i++) {
      Bidle.push(loadImage("image/Bird/Bird" + i + ".png"));
  }
 
+ //Se crea el arreglo de pngs para el demonio
  Dempunch = [];
  dpv = 0;
  for (i = 0; i <= 2; i++) {
@@ -71,14 +76,14 @@ function setup(){
  }
 
 
-
+//Se crea el arreglo de pngs para momotaro
  MMs = [];
  msv = 0;
  for (i = 0; i <= 1; i++) {
      MMs.push(loadImage("image/MMs/MMs" + i + ".png"));
  }
 
-
+//Se crea el arreglo de pngs para el perro
  Dbark = [];
  dbv = 0;
  for (i = 0; i <= 1; i++) {
@@ -95,6 +100,8 @@ function setup(){
 function draw (){
 
     background(0);
+
+    //Se pinta el fondo
     image(BG,-200+(plx),0);
     image(BG2,-200+(plx*2),0);
     image(BG3,-200+(plx*3),0);
@@ -102,6 +109,7 @@ function draw (){
     image(BG5,0,0);
 
   
+    //Se pinta el pajaro
             image(Bidle[bv],Pbird.getPosx(),Pbird.getPosy());
             if (frameCount % 15 === 0) {
                 bv++;
@@ -110,7 +118,7 @@ function draw (){
                 }
             }
 
-
+//Se pinta el demonio
             image(Dempunch[dpv],Pdemon.getPosx(),Pdemon.getPosy());
             if (frameCount % 15 === 0) {
                 dpv++;
@@ -119,6 +127,8 @@ function draw (){
                 }
             }
 
+
+//Se pinta momotaro
             image(MMs[msv],Pmomo.getPosx(),Pmomo.getPosy());
             if (frameCount % 15 === 0) {
                 msv++;
@@ -127,6 +137,7 @@ function draw (){
                 }
             }
 
+//Se pinta el mono
             image(Midle[mv],Pmico.getPosx(),Pmico.getPosy());
             if (frameCount % 25 === 0) {
                 mv++;
@@ -135,7 +146,7 @@ function draw (){
                 }
             }
 
-
+//Se pinta el perro
             image(Dbark[dbv],Pdog.getPosx(),Pdog.getPosy());
             if (frameCount % 25 === 0) {
                 dbv++;
@@ -144,15 +155,19 @@ function draw (){
                 }
             }
 
-
-    if ((mouseX>0 && mouseX < 100)&&(mouseY>0 && mouseY <700)){
+//Control de parallax temporal
+ if ((mouseX>0 && mouseX < 100)&&(mouseY>0 && mouseY <700)){
       plx++;
         }
-      
-        if ((mouseX>1100 && mouseX < 1200)&&(mouseY>0 && mouseY <700)){
+if ((mouseX>1100 && mouseX < 1200)&&(mouseY>0 && mouseY <700)){
       plx--;
         }
 
+
+
+
+
+        
 }
 
 
