@@ -1,5 +1,5 @@
 class Personaje extends Elemento {
-    constructor(px,py,ancho,alto,estado,texto,ruta,propiedad){
+    constructor(px,py,ancho,alto,estado,texto,propiedad){
         super(px,py,ancho,alto);
         //areibutos de la imagen 
         this.px=px;
@@ -10,8 +10,6 @@ class Personaje extends Elemento {
         this.estado=estado;
         //asociar texto con la imagen 
         this.texto=texto;
-        // la ruta de la imagen 
-        this.ruta=ruta;
         // propiedad es el tipo de interaccion (cambio de posicion, color etc..)
         this.propiedad=propiedad;
 

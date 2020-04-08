@@ -3,7 +3,7 @@
 
 let listaPalabras1= new Array();
 let listP1= new Array();
-let Pmico = new Personaje(0,400,300,300,false,"mico",'image/mico.png',0);
+let Pmico = new Personaje(-50,300,0,0,false,"mico",0);
 
 //Se cargan las fotos del fondo;
 let BG;
@@ -14,6 +14,8 @@ let BG5;
 
 let plx;
 
+
+let Midle;
 
 
 
@@ -29,7 +31,7 @@ function setup(){
     
 
  
-    mico = loadImage(Pmico.getRuta());
+    
 
     BG = loadImage('image/BG/BG.png');
     BG2 = loadImage('image/BG/BG2.png');
@@ -37,8 +39,19 @@ function setup(){
     BG4 = loadImage('image/BG/BG4.png');
     BG5 = loadImage('image/BG/BG5.png');
 
+ plx=0;
 
-    plx=0;
+
+
+ Midle = [];
+ mv = 0;
+ for (i = 0; i <= 2; i++) {
+     Midle.push(loadImage("image/Midle/Mt" + i + ".png"));
+ }
+
+
+
+
 }
 
 function draw (){
@@ -50,7 +63,15 @@ function draw (){
     image(BG4,-200+(plx*5),0);
     image(BG5,0,0);
 
-    image(mico,Pmico.getPosx(),Pmico.getPosy(),Pmico.getAncho(),Pmico.getAlto());
+    
+
+    image(Midle[mv],Pmico.getPosx(),Pmico.getPosy());
+            if (frameCount % 25 === 0) {
+                mv++;
+                if (mv >= 3) {
+                    mv = 0;
+                }
+            }
 
 
     if ((mouseX>0 && mouseX < 100)&&(mouseY>0 && mouseY <700)){
