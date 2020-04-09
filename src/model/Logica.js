@@ -63,9 +63,12 @@ class Logica{
                     console.log(texto1);
                 
                     }
-                    saveStrings(lista,'Nuevo.txt');
-
+                    
+                   
+                    
     }
+
+   
 
 
 }

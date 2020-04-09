@@ -22,6 +22,7 @@ let dm = 0;
 
 let click = true;
 let walk = false;
+let prees=false;
 
 //Se crea el objeto personaje para cada elemento.
 let Pmico = new Personaje(0, 300, 0, 0, false, "mico", 4);
@@ -29,6 +30,11 @@ let Pbird = new Personaje(0, -50, 0, 0, false, "pajaro", 2);
 let Pdemon = new Personaje(1000, 180, 0, 0, false, "demonio", 0);
 let Pmomo = new Personaje(-100, 180, 0, 0, false, "momotaro", 1);
 let Pdog = new Personaje(200, 320, 0, 0, false, "perro", 3);
+
+let start;
+let flecha;
+let next;
+let fin;
 
 //Se crean las variables de los pngs de fondo;
 let BG;
@@ -69,6 +75,12 @@ function setup() {
     //texto= join(this.listaPalabras1," ");
     //console.log(texto + "sss");
 
+
+    //Se carga el inicio 
+    start = loadImage('image/HUD/start.png');
+    fin = loadImage('image/HUD/fin.png');
+    flecha = loadImage('image/HUD/flecha.png');
+    next = loadImage('image/HUD/next.png');
 
 
     //Se cargan las imagenes de fondo.
@@ -150,7 +162,7 @@ function draw() {
 
     switch (pantalla) {
 
-        case 0:
+        case 1:
 
             background(0);
 
@@ -327,23 +339,41 @@ function draw() {
 
 
             }
-             break;
 
-             case 1:
+            if (mm == 1 && m == 1 && d == 1 && b == 1) {
+              
+                image(flecha,0,0);
+                click = false;
+            }
 
-             background(0);
+           if(prees==true){ press();}
+
+            break;
+
+        case 0:
+
+            background(0);
+            image(start, 0, 0);
+           press();
+            break;
+
+        case 2:
+            image(fin, 0, 0);
+            break;
+
+    }
 
 
-}
-
-  
 }// cierra draw
 
-function keyPressed(){
+function keyPressed() {
 
-if (key=='a'||key=='A'){
-    pantalla=1;
-}
+    if (key == 'a' || key == 'A') {
+        pantalla++;
+        if (pantalla == 2) {
+            saveStrings(lista, 'Nuevo.txt');
+        }
+    }
 
 }
 
@@ -376,9 +406,7 @@ function mousePressed() {
             logica.ajustarTexto();
         }
 
-        if (mm == 1 && m == 1 && d == 1 && b == 1) {
-            click = false;
-        }
+
 
     }
 
@@ -387,17 +415,17 @@ function mousePressed() {
         if ((mouseX > 1000 && mouseX < 1150) && (mouseY > 266 && mouseY < 650)) {
             Pdemon.interaccion();
             logica.ajustarTexto();
-
+prees=true;
 
         }
     }
 
-
-
 }
 
 
+function press(){
 
-
-
-
+    fill(255);
+    textSize(50);
+    text("Press A to continue",400,600);
+}
