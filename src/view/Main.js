@@ -1,8 +1,8 @@
 //String[] listaPalabras1, listP1;
 // listaaa
+let texto;
+let logica= new Logica();
 
-let listaPalabras1 = new Array();
-let listP1 = new Array();
 
 //Se crea la variable que controla el parallax
 let plx = 35;
@@ -55,19 +55,19 @@ let Dbark;
 let Dwalk;
 
 
-
 function setup() {
 
     createCanvas(1200, 700);
 
-    listaPalabras1 = loadStrings("texto/momotaro.txt");
-
-    for (i = 0; i < listaPalabras1.length; i++) {
-        listP1.push(listaPalabras1[i].split(","));
-    }
-
-
-
+   /* this.listaPalabras1 = loadStrings("./texto/momotaro.txt");
+    for(let i=0;i<this.listaPalabras1.lenght;i++ ) {
+        this.listP1[i]=this.listaPalabras1[i].split(",");
+        console.log("entre");*/
+    
+    //texto= join(this.listaPalabras1," ");
+    //console.log(texto + "sss");
+    
+   
 
     //Se cargan las imagenes de fondo.
     BG = loadImage('image/BG/BG.png');
@@ -137,12 +137,10 @@ function setup() {
     dwv = 0;
     for (i = 0; i <= 1; i++) {
         Dwalk.push(loadImage("image/Dwalk/Dw" + i + ".png"));
+        
     }
 
-
-
-
-
+    logica.cargarTxt();
 
 }
 
@@ -340,16 +338,9 @@ function draw() {
 
 
     //Coordenadas x & y 
-    fill(255);
-    textSize(20);
-    text("x=" + mouseX + "y=" + mouseY, mouseX, mouseY);
-
-
-
-
-
-
-
+   // fill(255);
+   // textSize(20);
+   // text("x=" + mouseX + "y=" + mouseY, mouseX, mouseY);
 
 
 
@@ -367,19 +358,23 @@ function mousePressed() {
 
         if ((mouseX > 70 && mouseX < 158) && (mouseY > 286 && mouseY < 631)) {
             Pmomo.interaccion();
+            logica.ajustarTexto();
         }
 
 
         if ((mouseX > 212 && mouseX < 306) && (mouseY > 178 && mouseY < 250)) {
             Pbird.interaccion();
+            logica.ajustarTexto();
         }
 
         if ((mouseX > 230 && mouseX < 320) && (mouseY > 447 && mouseY < 654)) {
             Pmico.interaccion();
+            logica.ajustarTexto();
         }
 
         if ((mouseX > 377 && mouseX < 500) && (mouseY > 519 && mouseY < 636)) {
             Pdog.interaccion();
+            logica.ajustarTexto();
         }
 
         if (mm == 1 && m == 1 && d == 1 && b == 1) {
@@ -392,6 +387,7 @@ function mousePressed() {
     if (plx == -36) {
         if ((mouseX > 1000 && mouseX < 1150) && (mouseY > 266 && mouseY < 650)) {
             Pdemon.interaccion();
+            logica.ajustarTexto();
 
 
         }
@@ -399,15 +395,10 @@ function mousePressed() {
 
 
 
-
-
-
-
-
-
-
-
 }
+
+
+
 
 
 
