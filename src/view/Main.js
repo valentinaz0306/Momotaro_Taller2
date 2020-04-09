@@ -1,7 +1,8 @@
 //String[] listaPalabras1, listP1;
 // listaaa
 let texto;
-let logica= new Logica();
+let logica = new Logica();
+let pantalla;
 
 
 //Se crea la variable que controla el parallax
@@ -24,7 +25,7 @@ let walk = false;
 
 //Se crea el objeto personaje para cada elemento.
 let Pmico = new Personaje(0, 300, 0, 0, false, "mico", 4);
-let Pbird = new Personaje(0,-50, 0, 0, false, "pajaro", 2);
+let Pbird = new Personaje(0, -50, 0, 0, false, "pajaro", 2);
 let Pdemon = new Personaje(1000, 180, 0, 0, false, "demonio", 0);
 let Pmomo = new Personaje(-100, 180, 0, 0, false, "momotaro", 1);
 let Pdog = new Personaje(200, 320, 0, 0, false, "perro", 3);
@@ -58,16 +59,17 @@ let Dwalk;
 function setup() {
 
     createCanvas(1200, 700);
+    pantalla = 0;
 
-   /* this.listaPalabras1 = loadStrings("./texto/momotaro.txt");
-    for(let i=0;i<this.listaPalabras1.lenght;i++ ) {
-        this.listP1[i]=this.listaPalabras1[i].split(",");
-        console.log("entre");*/
-    
+    /* this.listaPalabras1 = loadStrings("./texto/momotaro.txt");
+     for(let i=0;i<this.listaPalabras1.lenght;i++ ) {
+         this.listP1[i]=this.listaPalabras1[i].split(",");
+         console.log("entre");*/
+
     //texto= join(this.listaPalabras1," ");
     //console.log(texto + "sss");
-    
-   
+
+
 
     //Se cargan las imagenes de fondo.
     BG = loadImage('image/BG/BG.png');
@@ -137,7 +139,7 @@ function setup() {
     dwv = 0;
     for (i = 0; i <= 1; i++) {
         Dwalk.push(loadImage("image/Dwalk/Dw" + i + ".png"));
-        
+
     }
 
     logica.cargarTxt();
@@ -146,207 +148,204 @@ function setup() {
 
 function draw() {
 
-    background(0);
+    switch (pantalla) {
 
-    //Se pinta el fondo
-    image(BG, -200 + (plx), 0);
-    image(BG2, -200 + (plx * 2), 0);
-    image(BG3, -200 + (plx * 3), 0);
-    image(BG4, -200 + (plx * 5), 0);
-    image(BG5, 0, 0);
-
-
-    //Se pinta el pajaro
-    switch (b) {
-        case 0:
-            image(pajaro, Pbird.getPosx(), Pbird.getPosy());
-
-            break;
-
-        case 1:
-            image(Bidle[bv], Pbird.getPosx(), Pbird.getPosy());
-            if (frameCount % 15 === 0) {
-                bv++;
-                if (bv >= 2) {
-                    bv = 0;
-                }
-            }
-            break;
-
-
-
-    }
-
-
-
-
-    //Se pinta el demonio
-    switch (dm) {
         case 0:
 
-            image(demon, Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
+            background(0);
 
-            break;
-
-        case 1:
-            image(Dempunch[dpv], Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
-            if (frameCount % 15 === 0) {
-                dpv++;
-                if (dpv >= 3) {
-                    dpv = 0;
-                }
-            }
-            break;
-
-    }
+            //Se pinta el fondo
+            image(BG, -200 + (plx), 0);
+            image(BG2, -200 + (plx * 2), 0);
+            image(BG3, -200 + (plx * 3), 0);
+            image(BG4, -200 + (plx * 5), 0);
+            image(BG5, 0, 0);
 
 
+            //Se pinta el pajaro
+            switch (b) {
+                case 0:
+                    image(pajaro, Pbird.getPosx(), Pbird.getPosy());
+
+                    break;
+
+                case 1:
+                    image(Bidle[bv], Pbird.getPosx(), Pbird.getPosy());
+                    if (frameCount % 15 === 0) {
+                        bv++;
+                        if (bv >= 2) {
+                            bv = 0;
+                        }
+                    }
+                    break;
 
 
 
-
-    //Se pinta momotaro
-    switch (mm) {
-        case 0:
-            image(momo, Pmomo.getPosx(), Pmomo.getPosy());
-
-            break;
-
-        case 1:
-            image(MMs[msv], Pmomo.getPosx(), Pmomo.getPosy());
-            if (frameCount % 15 === 0) {
-                msv++;
-                if (msv >= 2) {
-                    msv = 0;
-                }
             }
 
-            break;
 
-        case 2:
-            image(MMw[mwv], Pmomo.getPosx(), Pmomo.getPosy());
-            if (frameCount % 27 === 0) {
-                mwv++;
-                if (mwv >= 3) {
-                    mwv = 0;
+            //Se pinta el demonio
+            switch (dm) {
+                case 0:
+
+                    image(demon, Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
+
+                    break;
+
+                case 1:
+                    image(Dempunch[dpv], Pdemon.getPosx() + (plx * 5), Pdemon.getPosy());
+                    if (frameCount % 15 === 0) {
+                        dpv++;
+                        if (dpv >= 3) {
+                            dpv = 0;
+                        }
+                    }
+                    break;
+
+            }
+
+            //Se pinta momotaro
+            switch (mm) {
+                case 0:
+                    image(momo, Pmomo.getPosx(), Pmomo.getPosy());
+
+                    break;
+
+                case 1:
+                    image(MMs[msv], Pmomo.getPosx(), Pmomo.getPosy());
+                    if (frameCount % 15 === 0) {
+                        msv++;
+                        if (msv >= 2) {
+                            msv = 0;
+                        }
+                    }
+
+                    break;
+
+                case 2:
+                    image(MMw[mwv], Pmomo.getPosx(), Pmomo.getPosy());
+                    if (frameCount % 27 === 0) {
+                        mwv++;
+                        if (mwv >= 3) {
+                            mwv = 0;
+                        }
+                    }
+
+                    break;
+
+            }
+
+            //Se pinta el mono
+
+            switch (m) {
+                case 0:
+                    image(mono, Pmico.getPosx(), Pmico.getPosy());
+
+                    break;
+
+                case 1:
+                    image(Midle[mv], Pmico.getPosx(), Pmico.getPosy());
+                    if (frameCount % 25 === 0) {
+                        mv++;
+                        if (mv >= 3) {
+                            mv = 0;
+                        }
+                    }
+
+                    break;
+                case 2:
+                    image(Mw[mwv], Pmico.getPosx(), Pmico.getPosy());
+                    if (frameCount % 25 === 0) {
+                        mwv++;
+                        if (mwv >= 3) {
+                            mwv = 0;
+                        }
+                    }
+
+                    break;
+
+            }
+
+            //Se pinta el perro
+            switch (d) {
+                case 0:
+                    image(perro, Pdog.getPosx(), Pdog.getPosy());
+
+                    break;
+
+                case 1:
+                    image(Dbark[dbv], Pdog.getPosx(), Pdog.getPosy());
+                    if (frameCount % 25 === 0) {
+                        dbv++;
+                        if (dbv >= 2) {
+                            dbv = 0;
+                        }
+                    }
+                    break;
+
+                case 2:
+                    image(Dwalk[dwv], Pdog.getPosx(), Pdog.getPosy());
+                    if (frameCount % 25 === 0) {
+                        dwv++;
+                        if (dwv >= 2) {
+                            dwv = 0;
+                        }
+                    }
+                    break;
+
+
+            }
+
+
+            if (plx == -36) {
+                walk = false;
+                if (walk == false) {
+                    (mm = 1) && (m = 1) && (d = 1) && (b = 1);
                 }
             }
 
-            break;
 
+            //Control de parallax temporal
 
-    }
+            // if ((mouseX > 0 && mouseX < 100) && (mouseY > 0 && mouseY < 700)) {
+            //    if (plx <= 35) {
+            //        plx++;
+            //   }
+            // }
 
+            if ((mouseX > 1100 && mouseX < 1200) && (mouseY > 0 && mouseY < 700)) {
+                walk = true;
 
-
-    //Se pinta el mono
-
-    switch (m) {
-        case 0:
-            image(mono, Pmico.getPosx(), Pmico.getPosy());
-
-            break;
-
-        case 1:
-            image(Midle[mv], Pmico.getPosx(), Pmico.getPosy());
-            if (frameCount % 25 === 0) {
-                mv++;
-                if (mv >= 3) {
-                    mv = 0;
+                if (walk == true) {
+                    (mm = 2) && (m = 2) && (d = 2) && (b = 1);
                 }
-            }
 
-            break;
-        case 2:
-            image(Mw[mwv], Pmico.getPosx(), Pmico.getPosy());
-            if (frameCount % 25 === 0) {
-                mwv++;
-                if (mwv >= 3) {
-                    mwv = 0;
+                if (plx >= -35) {
+                    plx--;
+
                 }
+
+
             }
+             break;
 
-            break;
+             case 1:
 
-
-    }
-
-
-
-    //Se pinta el perro
-    switch (d) {
-        case 0:
-            image(perro, Pdog.getPosx(), Pdog.getPosy());
-
-            break;
-
-        case 1:
-            image(Dbark[dbv], Pdog.getPosx(), Pdog.getPosy());
-            if (frameCount % 25 === 0) {
-                dbv++;
-                if (dbv >= 2) {
-                    dbv = 0;
-                }
-            }
-            break;
-
-        case 2:
-            image(Dwalk[dwv], Pdog.getPosx(), Pdog.getPosy());
-            if (frameCount % 25 === 0) {
-                dwv++;
-                if (dwv >= 2) {
-                    dwv = 0;
-                }
-            }
-            break;
-
-
-    }
-
-
-    if (plx == -36) {
-        walk = false;
-        if (walk == false) {
-            (mm = 1) && (m = 1) && (d = 1) && (b = 1);
-        }
-    }
-
-
-
-    //Control de parallax temporal
-
-    // if ((mouseX > 0 && mouseX < 100) && (mouseY > 0 && mouseY < 700)) {
-    //    if (plx <= 35) {
-    //        plx++;
-    //   }
-    // }
-
-    if ((mouseX > 1100 && mouseX < 1200) && (mouseY > 0 && mouseY < 700)) {
-        walk = true;
-
-        if (walk == true) {
-            (mm = 2) && (m = 2) && (d = 2) && (b = 1);
-        }
-
-        if (plx >= -35) {
-            plx--;
-
-        }
-
-
-    }
-
-
-    //Coordenadas x & y 
-   // fill(255);
-   // textSize(20);
-   // text("x=" + mouseX + "y=" + mouseY, mouseX, mouseY);
-
+             background(0);
 
 
 }
 
+  
+}// cierra draw
 
+function keyPressed(){
+
+if (key=='a'||key=='A'){
+    pantalla=1;
+}
+
+}
 
 function mousePressed() {
 
